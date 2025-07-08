@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Liquid Glass UI - Demo</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Demo Page Specific Styles -->
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      background: #1a1a2e;
+      background-image: url('./ios26.png');
+      background-size: cover;
+      background-attachment: fixed;
+      color: #f0f0f0;
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+
+    .demo-section {
+      width: 100%;
+      padding: 10vh 5vw;
+      box-sizing: border-box;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .section-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-description {
+      max-width: 600px;
+      margin-bottom: 4rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .demo-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .code-snippet {
+      background-color: rgba(0, 0, 0, 0.3);
+      border-radius: 12px;
+      padding: 1.5rem;
+      max-width: 400px;
+      width: 90%;
+      text-align: left;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      font-size: 0.85rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .code-snippet .comment {
+      color: #88a;
+    }
+
+    .lg-light-section {
+      background-color: #f0f0f0;
+      color: #333;
+    }
+
+    .lg-light-section .section-description {
+      color: rgba(0, 0, 0, 0.6);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 1. Hero Section -->
+  <div class="demo-section" style="min-height: 80vh; justify-content: center;">
+    <h1 class="section-title" style="font-size: 3.5rem;">Liquid Glass UI</h1>
+    <p class="section-description" style="font-size: 1.2rem;">
+      美しいグラスモーフィズムとモダンなエフェクトを、クラス指定だけで簡単に。
+    </p>
+    <div class="lg-glass lg-parallax lg-glow lg-float lg-animated-border lg-depth-3 lg-dynamic-light"
+      style="max-width: 520px; text-align: center;" tabindex="0">
+      <h2 class="lg-char-animate">Welcome</h2>
+      <p class="lg-text-animate-fadein" style="animation-delay: 0.5s;">すべてのエフェクトを組み合わせたデモです。</p>
+      <button class="lg-button lg-interactive" style="margin-top: 1rem;">
+        <span class="lg-icon">🚀</span>
+        Get Started
+      </button>
+    </div>
+  </div>
+
+  <!-- 2. Effects Section -->
+  <div class="demo-section">
+    <h2 class="section-title">Core Effects</h2>
+    <p class="section-description">
+      基本の `.lg-glass` に、クラスを追加するだけで様々な効果を適用できます。
+    </p>
+    <div class="demo-container">
+      <div class="lg-glass lg-glow" style="width: 300px;">
+        <h3>Glow Effect</h3>
+        <p>Hover me!</p>
+      </div>
+      <pre class="code-snippet"><span class="comment">// Glow on Hover</span>
+<div class="lg-glass lg-glow">...</div></pre>
+    </div>
+    <div class="demo-container" style="margin-top: 2rem;">
+      <div class="lg-glass lg-parallax" style="width: 300px;">
+        <h3>Parallax Effect</h3>
+        <p>Move your mouse.</p>
+      </div>
+      <pre class="code-snippet"><span class="comment">// 3D Parallax on Mouse Move</span>
+<div class="lg-glass lg-parallax">...</div></pre>
+    </div>
+  </div>
+
+  <!-- 3. Modal Component Section -->
+  <div class="demo-section">
+    <h2 class="section-title">Modal Component</h2>
+    <p class="section-description">
+      IDを指定するだけで動作するモーダルダイアログ。
+    </p>
+    <div class="demo-container">
+      <button class="lg-button" id="open-modal-btn">
+        <span class="lg-icon">🖼️</span>
+        Open Modal
+      </button>
+      <pre class="code-snippet"><span class="comment">// 1. Trigger Button</span>
+<button id="open-modal-btn">...</button>
+
+<span class="comment">// 2. Modal HTML (place at end of body)</span>
+ <div class="lg-modal-overlay" id="my-modal">
+    <div class="lg-glass lg-modal-content lg-depth-3">
+      <button class="lg-modal-close-btn" aria-label="Close modal">×</button>
+
+      <!-- Modal Body -->
+      <p>これはLiquid Glassスタイルで表示されたモーダルウィンドウです。<br>ここにはフォーム、画像、追加情報など、あらゆるコンテンツを配置できます。
+      </p>
+
+      <div style="margin: 2rem 0; text-align: left;">
+        <label for="name-input" style="display: block; margin-bottom: 0.5rem;">お名前:</label>
+        <input type="text" id="name-input" placeholder="例: グラス 太郎" style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.3); background: rgba(0,0,0,0.2); color: white; box-sizing: border-box;">
+      </div>
+
+      <!-- Modal Footer -->
+      <div style="display: flex; justify-content: flex-end; gap: 1rem;">
+        <button class="lg-button" style="background: rgba(255,255,255,0.05);">Cancel</button>
+        <button class="lg-button" style="background: #2e71d6;">Confirm</button>
+      </div>
+    </div>
+  </div></pre>
+    </div>
+  </div>
+
+  <!-- 4. 3D Carousel Section -->
+  <div class="demo-section">
+    <h2 class="section-title">3D Carousel</h2>
+    <p class="section-description">
+      `carousel3d.js` を利用した3Dカルーセルコンポーネント。
+    </p>
+    <div id="glass-carousel" class="wrapper">
+      <div class="carousel">
+        <div class="cell lg-glass">
+          <h3>Card 1</h3><img src="https://picsum.photos/id/10/300/400">
+        </div>
+        <div class="cell lg-glass">
+          <h3>Card 2</h3><img src="https://picsum.photos/id/20/300/400">
+        </div>
+        <div class="cell lg-glass">
+          <h3>Card 3</h3><img src="https://picsum.photos/id/30/300/400">
+        </div>
+        <div class="cell lg-glass">
+          <h3>Card 4</h3><img src="https://picsum.photos/id/40/300/400">
+        </div>
+        <div class="cell lg-glass">
+          <h3>Card 5</h3><img src="https://picsum.photos/id/50/300/400">
+        </div>
+      </div>
+    </div>
+    <div class="button-group" style="margin-top: 2rem;">
+      <button class="lg-button" data-carousel-prev>Previous</button>
+      <button class="lg-button" data-carousel-next>Next</button>
+    </div>
+  </div>
+
+  <!-- 5. Adaptive Background Section -->
+  <div class="demo-section lg-light-section">
+    <h2 class="section-title">Adaptive Background</h2>
+    <p class="section-description">
+      明るい背景の上では、パネルのスタイルが自動で切り替わります。
+    </p>
+    <div class="demo-container">
+      <div class="lg-glass" style="width: 300px;">
+        <h3>Adaptive Panel</h3>
+        <p>This text is dark.</p>
+      </div>
+      <pre class="code-snippet"><span class="comment">// Add .lg-light-section to a container</span>
+<div class="lg-light-section">
+  <div class="lg-glass">
+    <span class="comment"><!-- Text automatically becomes dark --></span>
+  </div>
+</div></pre>
+    </div>
+  </div>
+
+  <!-- ✅ Modal Component HTML (for demo) -->
+  <div class="lg-modal-overlay" id="my-modal">
+    <div class="lg-glass lg-modal-content lg-depth-3">
+      <button class="lg-modal-close-btn" aria-label="Close modal">×</button>
+      <h3><span class="lg-icon">✨</span>Modal Title</h3>
+      <p>This is a modal window with the Liquid Glass style.</p>
+      <button class="lg-button">Confirm</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="liquid-glass.js"></script>
+
+</body>
+
+</html>
