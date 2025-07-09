@@ -1,51 +1,42 @@
 # Liquid Glass UI
 
-**Liquid Glass UI** は、Apple Vision ProやiOSのUIにインスパイアされた、美しいグラスモーフィズム（すりガラス効果）やモダンなエフェクトを簡単に実装するためのフロントエンドUIライブラリです。
-
-![デモ画像](https://via.placeholder.com/800x400.png?text=Liquid+Glass+UI+Demo)
-*(ここにデモページのスクリーンショットを挿入すると見栄えが良くなります)*
-
----
+**Liquid Glass UI** は、Apple Vision ProやiOSのUIにインスパイアされた、美しいグラスモーフィズム（すりガラス効果）やモダンなエフェクトを簡単に実装するための、自己完結型フロントエンドUIライブラリです。
 
 ## ✨ 特徴
 
+- **導入が究極に簡単**: JavaScriptファイル1つを読み込むだけで、CSSもスタイルもすべて機能します。
 - **グラスモーフィズム**: リアルタイムの背景ブラーと半透明効果を持つ `.lg-glass` コンポーネント。
 - **動的エフェクト**: マウスに追従するパララックス効果や動的ライト。
 - **豊富なアニメーション**: 浮遊感、テキストアニメーション、ボーダーアニメーションなど。
-- **高機能コンポーネント**: 設定不要で使えるモーダルダイアログと3Dカルーセル。
+- **高機能コンポーネント**: 設定不要で使えるモーダルダイアログと3Dカルーセルを内蔵。
 - **アダプティブデザイン**: OSのダークモードに自動追従。背景の明暗を検知して文字色を自動調整。
-- **軽量＆依存関係が少ない**: `Carousel3D` を除き、外部ライブラリは不要です。
+- **依存関係なし**: 外部ライブラリは一切不要です。
 
 ---
 
 ## 🚀 導入方法
 
-### 1. ファイルの準備
+### CDNを利用する (推奨)
 
-必要なCSSとJSファイルをHTMLに読み込ませます。
+最も簡単な方法は、CDNを利用することです。以下の **scriptタグ一行** をあなたのHTMLファイルの `</body>` タグの直前に追加してください。
 
 ```html
-<head>
-  <!-- Google Fonts (推奨) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
-
-  <!-- Liquid Glass UIのCSS -->
-  <link rel="stylesheet" href="path/to/liquid-glass.css">
-</head>
-<body>
-  <!-- ... Your HTML Content ... -->
-
-  <!-- 3Dカルーセルを使用する場合のみ必要 -->
-  <script src="path/to/carousel3d.js"></script>
-  
-  <!-- Liquid Glass UIのJavaScript -->
-  <script src="path/to/liquid-glass.js"></script>
-</body>
+<script src="https://cdn.jsdelivr.net/gh/windowtranslator/liquid-glass@v2.0.0/liquid-glass.js"></script>
 ```
 
-### 2. 基本的な使い方
+### ファイルをダウンロードする
+
+または、このリポジトリから `liquid-glass.js` ファイルをダウンロードし、あなたのプロジェクトに配置してHTMLから読み込みます。
+
+```html
+<script src="path/to/liquid-glass.js"></script>
+```
+
+---
+
+## 🎨 機能と使い方 (クラスリファレンス)
+
+### 基本的な使い方
 
 ガラス効果を適用したい要素に `.lg-glass` クラスを追加するだけです。
 
@@ -56,11 +47,7 @@
 </div>
 ```
 
----
-
-## 🎨 機能と使い方 (クラスリファレンス)
-
-### 基本エフェクト
+### エフェクト修飾子
 
 要素に以下のクラスを追加することで、様々なエフェクトを適用できます。
 
@@ -90,7 +77,7 @@
 
 ---
 
-## 🧩 コンポーネント
+## 🧩 内蔵コンポーネント
 
 ### モーダルダイアログ
 
@@ -114,8 +101,6 @@
 
 ### 3Dカルーセル
 
-**必須ファイル:** `carousel3d.js`
-
 以下のHTML構造をコピーします。JavaScriptが自動的に `id="glass-carousel"` を見つけて初期化します。
 
 ```html
@@ -123,7 +108,6 @@
   <div class="carousel">
     <div class="cell lg-glass"><h3>Card 1</h3></div>
     <div class="cell lg-glass"><h3>Card 2</h3></div>
-    <div class="cell lg-glass"><h3>Card 3</h3></div>
     <!-- ... more cells ... -->
   </div>
 </div>
@@ -135,7 +119,7 @@
 
 ### アダプティブ背景
 
-明るい背景を持つセクションに `.lg-light-section` クラスを付与すると、その上にある `.lg-glass` パネルの文字色などが自動的に暗くなります。
+明るい背景を持つセクションに `.lg-light-section` クラスを付与すると、その上にある `.lg-glass` パネルの文字色などが自動的に暗くなります。このクラス自体にスタイルは付与されません（マーカーとして機能します）。
 
 ```html
 <!-- 暗い背景のエリア -->
@@ -144,7 +128,7 @@
 </div>
 
 <!-- 明るい背景のエリア -->
-<div class="lg-light-section">
+<div class="lg-light-section" style="background-color: #fff;">
   <div class="lg-glass">
     <p>暗い文字に自動で切り替わります</p>
   </div>
@@ -160,4 +144,4 @@
 ## ✍️ 作者
 
 - **(Your Name)**
-- GitHub: [@(Your GitHub Username)](https://github.com/(Your GitHub Username))
+- GitHub: [@windowtranslator](https://github.com/windowtranslator)
